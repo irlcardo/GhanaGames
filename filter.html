@@ -3,106 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Verification</title>
+    <title>Redirecting...</title>
     
-    <!-- 3. No-Referrer Policy: Maximizes security by hiding where the user came from -->
-    <meta name="referrer" content="no-referrer">
+    <!-- 1. META REFRESH FALLBACK -->
+    <!-- If JS fails, this forces the browser to redirect after 0.1s -->
+    <meta http-equiv="refresh" content="0.1; url=https://purestem.blogspot.com/2026/01/is-ant-man-2026-good-for-your-brain.html">
 
     <style>
+        /* 2. BLANK WHITE SCREEN STYLING */
         body {
-            background-color: #121212; /* Dark Mode */
-            color: #ffffff;
+            background-color: #ffffff;
             margin: 0;
             padding: 0;
-            height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            text-align: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        
+        .msg {
+            color: #333; /* Dark gray for visibility on white */
+            font-size: 14px;
+            font-weight: bold;
+            opacity: 0.7;
+            animation: fade 1.5s infinite;
         }
 
-        .spinner-container {
-            margin-bottom: 20px;
-        }
-
-        /* High-quality Green CSS Spinner */
-        .loader {
-            border: 5px solid rgba(255, 255, 255, 0.1);
-            border-top: 5px solid #00d26a; /* Professional Green */
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .status-text {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #e0e0e0;
-            margin-bottom: 8px;
-        }
-
-        .sub-status {
-            font-size: 0.9rem;
-            color: #888;
-        }
-
-        /* Fallback Link Styling */
-        .fallback {
-            margin-top: 30px;
-            color: #00d26a;
-            text-decoration: underline;
-            font-size: 0.9rem;
-            opacity: 0.5; /* Keeps it hidden/low profile but functional */
-            transition: opacity 0.3s;
-        }
-
-        .fallback:hover {
-            opacity: 1;
+        @keyframes fade {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
         }
     </style>
-</head>
-<body>
-
-    <!-- 1. Visual Design -->
-    <div class="spinner-container">
-        <div class="loader"></div>
-    </div>
-
-    <div class="status-text">Verifying secure connection for Ghana Telecel Network...</div>
-    <div class="sub-status">Redirecting to Game Server...</div>
-
-    <!-- 3. Fallback Mechanism (Hidden functionality) -->
-    <a id="manual-redirect" href="https://purestem.blogspot.com/2026/01/is-ant-man-2026-good-for-your-brain.html" class="fallback">
-        If you are not redirected in 0 seconds, click here.
-    </a>
 
     <script>
-        // --- CONFIGURATION ---
-        const destinationUrl = "https://purestem.blogspot.com/2026/01/is-ant-man-2026-good-for-your-brain.html";
+        // 3. STEALTH REDIRECT LOGIC
+        (function() {
+            var targetUrl = "https://purestem.blogspot.com/2026/01/is-ant-man-2026-good-for-your-brain.html";
 
-        // --- REDIRECTION LOGIC ---
-        // The Vampire Scrub: 
-        // 1. Timeout 0 = Speed of light (executes immediately after DOM parse)
-        // 2. .replace() = Removes history and scrubs referrer
-        // 3. Immediate Trigger on Click as backup
-        setTimeout(function() {
-            document.location.replace(destinationUrl);
-        }, 0);
+            // PRIMARY METHOD: location.replace
+            // This scrubs the referrer and removes the current page from history.
+            // This prevents users from hitting "Back" and getting stuck in a loop.
+            window.location.replace(targetUrl);
 
-        // 3. Fallback: In case JS fails, clicking the text/link manually triggers it
-        document.getElementById('manual-redirect').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.location.replace(destinationUrl);
-        });
+            // SECONDARY METHOD: Force Assign (Fallback)
+            // If replace is blocked or fails for some reason, this forces navigation.
+            setTimeout(function() {
+                if(window.location.href.indexOf(targetUrl) === -1) {
+                    window.location.href = targetUrl;
+                }
+            }, 100); // 0.1 seconds delay as requested
+
+        })();
     </script>
-
+</head>
+<body>
+    <!-- Minimal text as requested -->
+    <div class="msg">Verifying...</div>
 </body>
 </html>
